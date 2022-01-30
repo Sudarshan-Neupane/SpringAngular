@@ -16,6 +16,6 @@ jobs:
     - name: step one for second job
       uses: actions/checkout@v2 
     - name: step two for second job
-      run: "Git-ChildItem Env: Sort-Object Name"
+      run: "Get-ChildItem Env: Sort-Object Name"
     
     
