@@ -1,0 +1,21 @@
+name: push to pipeline github action test
+on: push
+jobs:
+  job1: 
+    name: First job
+    runs-on: ubuntu-latest
+    steps:
+    - name: step one for first job
+      uses: actions/checkout@v2 
+    - name: step two for first job
+      run: env | sort
+  job2: 
+    name: Second Job
+    runs-on: windows-latest
+    steps:
+    - name: step one for second job
+      uses: actions/checkout@v2 
+    - name: step two for second job
+      run: "Git-ChildItem Env: Sort-Object Name"
+    
+    
