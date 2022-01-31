@@ -14,7 +14,7 @@ jobs:
     - name: step two for first job
       run: |
         env | sort
-        echo ${{OVERIDE_VALUE}}
+        echo ${{env.OVERIDE_VALUE}}
   job2: 
     name: Second Job
     env:
@@ -26,7 +26,7 @@ jobs:
     - name: step two for second job
       run: |
         "Get-ChildItem Env: | Sort-Object Name"
-        echo ${{OVERIDE_VALUE}}
+        echo ${{env.OVERIDE_VALUE}}
   job3:
     name: Job3 depends upon job 1 and 2
     runs-on: ubuntu-latest
