@@ -10,11 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: step one for first job
-      uses: actions/checkout@v2 
+      uses: actions/checkout@v2
+      with:
+        display_name: ${{secrets.DISPLAY_MY_NAME}}
     - name: step two for first job
       run: |
         env | sort
         echo ${{env.OVERIDE_VALUE}}
+        echo ${{secrets.DISPLAY_MY_NAME}}
   job2: 
     name: Second Job
     env:
