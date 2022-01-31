@@ -1,22 +1,32 @@
 name: push to pipeline github action test
+env:
+  OVERIDE_VALUE: 'First Value Here'
 on: push
 jobs:
   job1: 
     name: First job
+    env:
+      OVERIDE_VALUE: 'Override from the First Job'
     runs-on: ubuntu-latest
     steps:
     - name: step one for first job
       uses: actions/checkout@v2 
     - name: step two for first job
-      run: env | sort
+      run: |
+        env | sort
+        echo ${{OVERIDE_VALUE}}
   job2: 
     name: Second Job
+    env:
+      OVERIDE_VALUE: 'Override from the second value'
     runs-on: windows-latest
     steps:
     - name: step one for second job
       uses: actions/checkout@v2 
     - name: step two for second job
-      run: "Get-ChildItem Env: | Sort-Object Name"
+      run: |
+        "Get-ChildItem Env: | Sort-Object Name"
+        echo ${{OVERIDE_VALUE}}
   job3:
     name: Job3 depends upon job 1 and 2
     runs-on: ubuntu-latest
